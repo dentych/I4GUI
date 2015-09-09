@@ -1,0 +1,30 @@
+﻿<Window x:Class="BabyNames.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BabyNames"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="400" Width="600" Loaded="Window_Loaded">
+    <Grid Background="#FFF0F0F0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <ListBox x:Name="listBox" Margin="20,50">
+            <ListBoxItem x:Name="y1900" Content="1900"/>
+            <ListBoxItem x:Name="y1910" Content="1910"/>
+            <ListBoxItem x:Name="y1920" Content="1920"/>
+            <ListBoxItem x:Name="y1930" Content="1930"/>
+            <ListBoxItem x:Name="y1940" Content="1940"/>
+            <ListBoxItem x:Name="y1950" Content="1950"/>
+            <ListBoxItem x:Name="y1960" Content="1960"/>
+            <ListBoxItem x:Name="y1970" Content="1970"/>
+            <ListBoxItem x:Name="y1980" Content="1980"/>
+            <ListBoxItem x:Name="y1990" Content="1990"/>
+            <ListBoxItem x:Name="y2000" Content="2000"/>
+        </ListBox>
+        <ListBox x:Name="babyNamesList" Grid.Column="1" Margin="20, 50"/>
+
+    </Grid>
+</Window>
