@@ -38,17 +38,13 @@ namespace BabyNames
                 BabyName baby = new BabyName(line);
                 babynames.Add(baby);
             }
+        }
 
-            foreach (var baby in babynames)
-            {
-                int babyRank = baby.Rank(1900);
+        private void Select_Decade(object sender, MouseButtonEventArgs e)
+        {
+            ListBoxItem item = sender as ListBoxItem;
 
-                if (babyRank <= 10 && babyRank != 0)
-                {
-                    string str = baby.Name + "\t\t" + baby.Rank(1900);
-                    babyNamesList.Items.Add(str);
-                }
-            }
+            babyNamesList.Items.Add(item.Content);
         }
     }
 }

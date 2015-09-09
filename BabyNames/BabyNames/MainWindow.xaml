@@ -12,19 +12,21 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <ListBox x:Name="listBox" Margin="20,50">
-            <ListBoxItem x:Name="y1900" Content="1900"/>
-            <ListBoxItem x:Name="y1910" Content="1910"/>
-            <ListBoxItem x:Name="y1920" Content="1920"/>
-            <ListBoxItem x:Name="y1930" Content="1930"/>
-            <ListBoxItem x:Name="y1940" Content="1940"/>
-            <ListBoxItem x:Name="y1950" Content="1950"/>
-            <ListBoxItem x:Name="y1960" Content="1960"/>
-            <ListBoxItem x:Name="y1970" Content="1970"/>
-            <ListBoxItem x:Name="y1980" Content="1980"/>
-            <ListBoxItem x:Name="y1990" Content="1990"/>
-            <ListBoxItem x:Name="y2000" Content="2000"/>
+            <ListBoxItem Content="1900" MouseUp="Select_Decade"/>
+            <ListBoxItem Content="1910" MouseUp="Select_Decade"/>
+            <ListBoxItem Content="1920" MouseUp="Select_Decade"/>
+            <ListBoxItem Content="1930" MouseUp="Select_Decade"/>
+            <ListBoxItem Content="1940" MouseUp="Select_Decade"/>
+            <ListBoxItem Content="1950" MouseUp="Select_Decade"/>
+            <ListBoxItem Content="1960" MouseUp="Select_Decade"/>
+            <ListBoxItem Content="1970" MouseUp="Select_Decade"/>
+            <ListBoxItem Content="1980" MouseUp="Select_Decade"/>
+            <ListBoxItem Content="1990" MouseUp="Select_Decade"/>
+            <ListBoxItem Content="2000" MouseUp="Select_Decade"/>
         </ListBox>
         <ListBox x:Name="babyNamesList" Grid.Column="1" Margin="20, 50"/>
+        <Label x:Name="label" Content="Decades" HorizontalAlignment="Left" Margin="20" VerticalAlignment="Top"/>
+        <Label x:Name="label1" Content="Top 10 baby names in selected decade" Grid.Column="1" HorizontalAlignment="Left" Margin="20" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
