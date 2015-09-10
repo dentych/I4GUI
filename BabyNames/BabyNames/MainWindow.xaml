@@ -5,9 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BabyNames"
         mc:Ignorable="d"
-        Title="Babyname rankings" Height="600" Width="800" Loaded="Window_Loaded" ResizeMode="CanMinimize">
+        Title="Babyname rankings" Height="600" Width="800" Loaded="Window_Loaded" ResizeMode="CanMinimize"
+        x:Name="MainWin">
     <Grid Background="#FFF0F0F0">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
@@ -15,7 +17,18 @@
             <ColumnDefinition Width="150"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <ListBox x:Name="listBox" Margin="20, 50, 20, 10" HorizontalContentAlignment="Center">
+        <Menu Grid.ColumnSpan="2" BorderThickness="0">
+            <MenuItem Header="_File">
+                <MenuItem Header="E_xit" Click="MenuItem_Exit"/>
+            </MenuItem>
+            <MenuItem Header="F_ont">
+                <MenuItem Header="Small" Click="MenuItem_ChangeFontSize"/>
+                <MenuItem Header="Medium" Click="MenuItem_ChangeFontSize"/>
+                <MenuItem Header="Large" Click="MenuItem_ChangeFontSize"/>
+            </MenuItem>
+        </Menu>
+        
+        <ListBox x:Name="listBox" Grid.Row="1" Margin="20, 40, 20, 10" HorizontalContentAlignment="Center">
             <ListBoxItem Content="1900" MouseUp="Select_Decade"/>
             <ListBoxItem Content="1910" MouseUp="Select_Decade"/>
             <ListBoxItem Content="1920" MouseUp="Select_Decade"/>
@@ -28,10 +41,11 @@
             <ListBoxItem Content="1990" MouseUp="Select_Decade"/>
             <ListBoxItem Content="2000" MouseUp="Select_Decade"/>
         </ListBox>
-        <ListBox x:Name="babyNamesList" Grid.Column="1" Margin="20, 50, 20, 10"/>
-        <Label Content="Decades" HorizontalAlignment="Left" Margin="20" VerticalAlignment="Top"/>
-        <Label Content="Top 10 baby names in selected decade" Grid.Column="1" HorizontalAlignment="Left" Margin="20" VerticalAlignment="Top"/>
-        <GroupBox x:Name="groupBox" Header="Search" Margin="20, 0, 20, 10" Grid.Row="1" Grid.ColumnSpan="2">
+        <ListBox x:Name="babyNamesList" Grid.Row="1" Grid.Column="1" Margin="20, 40, 20, 10"/>
+        <Label Content="Decades" Grid.Row="1" HorizontalAlignment="Left" Margin="20, 10" VerticalAlignment="Top"/>
+        <Label Content="Top 10 baby names in selected decade" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="20, 10" VerticalAlignment="Top"/>
+        
+        <GroupBox x:Name="groupBox" Header="Search" Margin="20, 0, 20, 10" Grid.Row="2" Grid.ColumnSpan="2">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -44,6 +58,8 @@
                 <TextBox x:Name="avgRank" Width="30" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="180,100,0,0" IsReadOnly="True"/>
                 <Label Content="Trend:" VerticalAlignment="Top" Padding="0" HorizontalAlignment="Left" Margin="80,140,0,0"/>
                 <TextBox x:Name="trendBox" VerticalAlignment="Top" Margin="180,140,10,0" IsReadOnly="True"/>
+                <Label Content="Last query time:" VerticalAlignment="Bottom" HorizontalAlignment="Left" Padding="0"/>
+                <Label x:Name="labelQueryTime" Margin="90, 0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Padding="0"/>
 
                 <Label Content="Year" Grid.Column="1" Padding="0" Margin="10, 0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <Label Content="Rank" Grid.Column="1" Padding="0" Margin="70, 0" HorizontalAlignment="Left" VerticalAlignment="Top"/>

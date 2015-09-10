@@ -150,12 +150,14 @@ namespace BabyNames
                 currentNames = 0;
             }
 
-            babyNamesList.Items.Add((string)("Time used: " + watch.ElapsedTicks));
             watch.Stop();
+            labelQueryTime.Content = string.Format("{0:0.00} us", (watch.Elapsed.TotalMilliseconds * 1000));
         }
 
         private void Button_Search(object sender, RoutedEventArgs routedEventArgs)
         {
+            var watch = Stopwatch.StartNew();
+
             var searchString = searchName.Text;
 
             avgRank.Clear();
@@ -169,6 +171,8 @@ namespace BabyNames
             if (baby == null)
             {
                 listRankAndYear.Items.Add("No entries for that name!");
+                watch.Stop();
+                labelQueryTime.Content = string.Format("{0:0.00} us", (watch.Elapsed.TotalMilliseconds * 1000));
                 return;
             }
 
@@ -196,6 +200,9 @@ namespace BabyNames
             {
                 trendBox.Text = "Samefagging";
             }
+
+            watch.Stop();
+            labelQueryTime.Content = string.Format("{0:0.00} us", (watch.Elapsed.TotalMilliseconds * 1000));
         }
 
         private BabyName SearchDB(string searchString)
@@ -206,6 +213,23 @@ namespace BabyNames
             }
 
             return null;
+        }
+
+        private void MenuItem_ChangeFontSize(object sender, RoutedEventArgs e)
+        {
+            var item = sender as MenuItem;
+
+            if (item.Header.ToString() == "Small")
+                MainWin.FontSize = (double) new FontSizeConverter().ConvertFrom("8pt");
+            else if (item.Header.ToString() == "Medium")
+                MainWin.FontSize = (double)new FontSizeConverter().ConvertFrom("9pt");
+            else
+                MainWin.FontSize = (double)new FontSizeConverter().ConvertFrom("10pt");
+        }
+
+        private void MenuItem_Exit(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }
