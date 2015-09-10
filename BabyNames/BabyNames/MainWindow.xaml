@@ -5,13 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BabyNames"
         mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="600" Loaded="Window_Loaded">
+        Title="MainWindow" Height="500" Width="600" Loaded="Window_Loaded">
     <Grid Background="#FFF0F0F0">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <ListBox x:Name="listBox" Margin="20,50">
+        <ListBox x:Name="listBox" Margin="20, 50, 20, 10" HorizontalContentAlignment="Center">
             <ListBoxItem Content="1900" MouseUp="Select_Decade"/>
             <ListBoxItem Content="1910" MouseUp="Select_Decade"/>
             <ListBoxItem Content="1920" MouseUp="Select_Decade"/>
@@ -24,9 +28,28 @@
             <ListBoxItem Content="1990" MouseUp="Select_Decade"/>
             <ListBoxItem Content="2000" MouseUp="Select_Decade"/>
         </ListBox>
-        <ListBox x:Name="babyNamesList" Grid.Column="1" Margin="20, 50"/>
-        <Label x:Name="label" Content="Decades" HorizontalAlignment="Left" Margin="20" VerticalAlignment="Top"/>
-        <Label x:Name="label1" Content="Top 10 baby names in selected decade" Grid.Column="1" HorizontalAlignment="Left" Margin="20" VerticalAlignment="Top"/>
+        <ListBox x:Name="babyNamesList" Grid.Column="1" Margin="20, 50, 20, 10"/>
+        <Label Content="Decades" HorizontalAlignment="Left" Margin="20" VerticalAlignment="Top"/>
+        <Label Content="Top 10 baby names in selected decade" Grid.Column="1" HorizontalAlignment="Left" Margin="20" VerticalAlignment="Top"/>
+        <GroupBox x:Name="groupBox" Header="Search" Margin="20, 0, 20, 10" Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Name:" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0" Margin="20"/>
+                <TextBox x:Name="searchName" Margin="80,20,10,20" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                <Button Content="Search" Click="Button_Search" Padding="20, 2" Margin="80, 60, 0, 0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                <Label Content="Average ranking:" VerticalAlignment="Top" Padding="0" HorizontalAlignment="Left" Margin="80,100,0,0"/>
+                <TextBox x:Name="avgRank" Width="30" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="180,100,0,0" IsReadOnly="True"/>
+                <Label Content="Trend:" VerticalAlignment="Top" Padding="0" HorizontalAlignment="Left" Margin="80,140,0,0"/>
+                <TextBox x:Name="trendBox" VerticalAlignment="Top" Margin="180,140,10,0" IsReadOnly="True"/>
+
+                <Label Content="Year" Grid.Column="1" Padding="0" Margin="10, 0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Label Content="Rank" Grid.Column="1" Padding="0" Margin="70, 0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <ListBox x:Name="listRankAndYear" Grid.Column="1" Margin="10, 20, 10, 10"/>
+            </Grid>
+        </GroupBox>
 
     </Grid>
 </Window>
