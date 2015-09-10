@@ -158,6 +158,8 @@ namespace BabyNames
         {
             var searchString = searchName.Text;
 
+            avgRank.Clear();
+            trendBox.Clear();
             listRankAndYear.Items.Clear();
 
             if (searchString.Length <= 0) return;
