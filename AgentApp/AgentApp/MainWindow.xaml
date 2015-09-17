@@ -1,0 +1,39 @@
+﻿<Window x:Class="AgentApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AgentApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="300
+        " Width="525" Loaded="OnLoaded"
+        xmlns:debug="clrnamespace:System.Diagnostics;assembly=WindowsBase">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Margin="0">
+            <Label Content="Id"/>
+            <Label Content="CodeName"/>
+            <Label Content="Speciality"/>
+            <Label Content="Assignment"/>
+            <Label Content="List size:"/>
+            <Label x:Name="listSize"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1">
+            <TextBox Margin="4" x:Name="textId" Text="{Binding ID}"/>
+            <TextBox Margin="4" x:Name="textCodename" Text="{Binding CodeName}"/>
+            <TextBox Margin="4" x:Name="textSpeciality" Text="{Binding Speciality}"/>
+            <TextBox Margin="4" TextWrapping="Wrap" AcceptsReturn="True" Text="{Binding Assignment}" Height="70pt" x:Name="textAssignment"/>
+            <Button Content="&lt;" Click="ClickPrevious"/>
+            <Button Content="&gt;" Click="ClickNext"/>
+            <Button Content="Add new" Click="ClickAddNew"/>
+        </StackPanel>
+
+        <ListBox x:Name="listbox" Grid.Column="2" DisplayMemberPath="CodeName" ItemsSource="{Binding}" SelectionChanged="onSelectionChanged"/>
+    </Grid>
+</Window>
