@@ -4,10 +4,20 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AgentApp"
+        xmlns:i4gui="clr-namespace:I4GUI"
         mc:Ignorable="d"
-        Title="Agents" Height="400" Width="600" Loaded="OnLoaded"
+        Title="Agents" Height="400" Width="600"
         xmlns:debug="clrnamespace:System.Diagnostics;assembly=WindowsBase" WindowStartupLocation="CenterScreen">
-    <Grid>
+    <Window.Resources>
+        <i4gui:Agents x:Key="agents"/>
+        <local:ColorControl x:Key="colorControl"/>
+        <SolidColorBrush x:Key="backgroundBrush"/>
+
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="FontSize" Value="10pt"/>
+        </Style>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource agents}" Background="{DynamicResource ResourceKey=backgroundBrush}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="2*"/>
@@ -16,6 +26,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
         <StackPanel Grid.ColumnSpan="3" Margin="0, 0, 0, 10">
@@ -23,12 +34,24 @@
                 <MenuItem Header="File">
                     <MenuItem Header="E_xit"/>
                 </MenuItem>
+                <MenuItem Header="Background" DataContext="{StaticResource colorControl}">
+                    <MenuItem Header="Default" Command="{Binding ChangeBackground}" CommandParameter="default"/>
+                    <MenuItem Header="Light green" Command="{Binding ChangeBackground}" CommandParameter="lightgreen"/>
+                    <MenuItem Header="Light blue" Command="{Binding ChangeBackground}" CommandParameter="lightblue"/>
+                </MenuItem>
             </Menu>
-            <ToolBar FontSize="12pt">
-                <Button Content="&lt;" Width="50" Click="ClickPrevious"/>
-                <Button Content="&gt;" Width="50" Click="ClickNext"/>
-                <Button Content="Add new" Click="ClickAddNew"/>
-            </ToolBar>
+            <ToolBarTray>
+                <ToolBar FontSize="12pt">
+                    <Button Content="&lt;" Width="50" Command="{Binding PreviousCommand}"/>
+                    <Button Content="&gt;" Width="50" Command="{Binding NextCommand}"/>
+                    <Button Command="{Binding AddCommand}">
+                        <Image Source="add.png" Height="25"/>
+                    </Button>
+                    <Button Command="{Binding DeleteCommand}">
+                        <Image Source="trash.png" Height="25"/>
+                    </Button>
+                </ToolBar>
+            </ToolBarTray>
         </StackPanel>
 
         <StackPanel Margin="0" Grid.Row="1">
@@ -47,6 +70,13 @@
             <TextBox Margin="4" TextWrapping="Wrap" AcceptsReturn="True" Text="{Binding Assignment}" Height="70pt" x:Name="textAssignment"/>
         </StackPanel>
 
-        <ListBox x:Name="listbox" Grid.Column="2" Grid.Row="1" DisplayMemberPath="CodeName" ItemsSource="{Binding}" SelectionChanged="onSelectionChanged"/>
+        <ListBox x:Name="listbox" Grid.Column="2" Grid.Row="1" DisplayMemberPath="CodeName" IsSynchronizedWithCurrentItem="True" 
+                 ItemsSource="{Binding}" SelectedIndex="{Binding CurrentIndex}" Margin="4"/>
+
+        <StatusBar Grid.Row="2" Grid.ColumnSpan="3">
+            <StatusBarItem Content="Count:"/>
+            <StatusBarItem Content="{Binding Count}"/>
+            <StatusBarItem Name="labelTime" Content="{Binding Path=Now}" HorizontalAlignment="Right"/>
+        </StatusBar>
     </Grid>
 </Window>
