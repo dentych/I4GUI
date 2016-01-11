@@ -56,8 +56,8 @@
                 <Setter Property="Foreground" Value="White"/>
                 <Setter Property="Height" Value="20"/>
                 <Setter Property="Width" Value="20"/>
-                <Setter Property="Padding" Value="5, 0, 0, 0"/>
-                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="Padding" Value="6, 0, 0, 0"/>
+                <Setter Property="FontSize" Value="13"/>
                 <Setter Property="TextBlock.Background">
                     <Setter.Value>
                         <VisualBrush>
