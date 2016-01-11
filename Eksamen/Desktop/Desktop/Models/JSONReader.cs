@@ -29,9 +29,11 @@ namespace Desktop.Models
                 string json = File.ReadAllText(Directory.GetCurrentDirectory() + "\\questions.json");
                 List<QuestionDto> questions = JsonConvert.DeserializeObject<List<QuestionDto>>(json);
 
+                int index = 1;
                 foreach (var q in questions)
                 {
                     var tmp = new Question(q);
+                    tmp.Index = index++;
                     questionList.Add(tmp);
                 }
             }

@@ -30,6 +30,7 @@ namespace Desktop.Models
             }
         }
         public bool Answered { get; private set; }
+        public int Index { get; set; }
 
         // Constructor
         public Question()

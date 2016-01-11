@@ -22,5 +22,10 @@ namespace Desktop
             var vm = new HighscoreVM();
             dialog.ShowDialog("Highscore", vm);
         }
+
+        private void Restart_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModelDecider.Instance.ViewModel = new MainWindowVM();
+        }
     }
 }

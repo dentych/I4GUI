@@ -13,7 +13,7 @@
                 <StackPanel HorizontalAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Auto">
                     <Label Content="Immediate Feedback Assesment Technique (IFAT)" 
                    HorizontalAlignment="Center" FontSize="20" Grid.ColumnSpan="2"/>
-                    <ItemsControl ItemsSource="{Binding Questions}" AlternationCount="{Binding Questions.Count}" Grid.Row="1" Margin="10">
+                    <ItemsControl ItemsSource="{Binding Questions}" Grid.Row="1" Margin="10">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel/>
@@ -25,8 +25,7 @@
                                     <StackPanel Margin="0,0,0,25">
                                         <WrapPanel>
                                             <Label Content="Spørgsmål" FontWeight="Bold" Padding="5,5,0,5"/>
-                                            <Label Content="{Binding DataContext.QuestionNumber, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
-                                    FontWeight="Bold"/>
+                                            <Label Content="{Binding Index}" FontWeight="Bold"/>
                                         </WrapPanel>
                                         <Label>
                                             <AccessText Text="{Binding Text}" TextWrapping="WrapWithOverflow"/>
@@ -121,7 +120,7 @@
             <Menu DockPanel.Dock="Top" Background="LightSkyBlue">
                 <MenuItem Header="_Filer" Padding="10,5">
                     <MenuItem Header="_Highscore" Click="MenuHighscore_Click"/>
-                    <MenuItem Header="Jeg gør intet :-)"/>
+                    <MenuItem Header="_Start forfra" Click="Restart_Click"/>
                 </MenuItem>
             </Menu>
             <ContentControl Content="{Binding Path=ViewModel}"/>

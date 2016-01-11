@@ -19,10 +19,6 @@ namespace Desktop.ViewModels
         private int points;
 
         public IList<IQuestion> Questions { get; set; }
-        public int QuestionNumber
-        {
-            get { return _questionNumber++; }
-        }
         public int Points
         {
             get { return points; }
