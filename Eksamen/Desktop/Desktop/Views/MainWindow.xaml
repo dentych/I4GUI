@@ -1,0 +1,130 @@
+﻿<Window x:Class="Desktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Desktop"
+        xmlns:vm="clr-namespace:Desktop.ViewModels"
+        mc:Ignorable="d"
+        Title="Immediate Feedback Assesment Technique" Height="600" Width="1000" WindowState="Maximized" Background="WhiteSmoke">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type vm:MainWindowVM}">
+            <ScrollViewer>
+                <StackPanel HorizontalAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                    <Label Content="Immediate Feedback Assesment Technique (IFAT)" 
+                   HorizontalAlignment="Center" FontSize="20" Grid.ColumnSpan="2"/>
+                    <ItemsControl ItemsSource="{Binding Questions}" AlternationCount="{Binding Questions.Count}" Grid.Row="1" Margin="10">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <GroupBox Width="480px" Margin="10">
+                                    <StackPanel Margin="0,0,0,25">
+                                        <WrapPanel>
+                                            <Label Content="Spørgsmål" FontWeight="Bold" Padding="5,5,0,5"/>
+                                            <Label Content="{Binding DataContext.QuestionNumber, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
+                                    FontWeight="Bold"/>
+                                        </WrapPanel>
+                                        <Label>
+                                            <AccessText Text="{Binding Text}" TextWrapping="WrapWithOverflow"/>
+                                        </Label>
+                                        <WrapPanel>
+                                            <Label Content="A." FontWeight="Bold"/>
+                                            <Label>
+                                                <AccessText Text="{Binding Answers[A]}" TextWrapping="WrapWithOverflow"/>
+                                            </Label>
+                                        </WrapPanel>
+                                        <WrapPanel>
+                                            <Label Content="B." FontWeight="Bold"/>
+                                            <Label>
+                                                <AccessText Text="{Binding Answers[B]}" TextWrapping="WrapWithOverflow"/>
+                                            </Label>
+                                        </WrapPanel>
+                                        <WrapPanel>
+                                            <Label Content="C." FontWeight="Bold"/>
+                                            <Label>
+                                                <AccessText Text="{Binding Answers[C]}" TextWrapping="WrapWithOverflow"/>
+                                            </Label>
+                                        </WrapPanel>
+                                        <WrapPanel>
+                                            <Label Content="D." FontWeight="Bold"/>
+                                            <Label>
+                                                <AccessText Text="{Binding Answers[D]}" TextWrapping="WrapWithOverflow"/>
+                                            </Label>
+                                        </WrapPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button x:Name="A" Content="A" Style="{StaticResource AnsButtonStyle}"
+                                        Command="{Binding AnswerButton}"
+                                        CommandParameter="{Binding ElementName=A}"/>
+                                            <Button x:Name="B" Content="B" Style="{StaticResource AnsButtonStyle}"
+                                        Command="{Binding AnswerButton}"
+                                        CommandParameter="{Binding ElementName=B}"/>
+                                            <Button x:Name="C" Content="C" Style="{StaticResource AnsButtonStyle}"
+                                        Command="{Binding AnswerButton}"
+                                        CommandParameter="{Binding ElementName=C}"/>
+                                            <Button x:Name="D" Content="D" Style="{StaticResource AnsButtonStyle}"
+                                        Command="{Binding AnswerButton}"
+                                        CommandParameter="{Binding ElementName=D}"/>
+                                            <TextBlock Text="Points:" FontSize="20px" Margin="5" VerticalAlignment="Center"/>
+                                            <TextBlock Text="{Binding Points}" FontSize="20px" Margin="0, 10, 10, 10" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </GroupBox>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                    <WrapPanel HorizontalAlignment="Center"  Margin="0, 25">
+                        <Button Content="Afslut test" Command="{Binding CompleteBtn}" Padding="10" FontSize="20" VerticalAlignment="Center"/>
+                    </WrapPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:EndWindowVM}">
+            <Grid HorizontalAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+                <Label Content="Immediate Feedback Assesment Technique (IFAT)" 
+                   HorizontalAlignment="Center" FontSize="20" Grid.ColumnSpan="2"/>
+                <StackPanel Grid.Row="1">
+                    <Label Content="Testen er slut!" FontSize="25" HorizontalAlignment="Center"/>
+                    <Label Content="Din endelige score:" FontSize="25" HorizontalAlignment="Center"/>
+                    <Label Content="{Binding FinalScore}" FontSize="40" HorizontalAlignment="Center"/>
+                    <StackPanel TextBlock.FontSize="20">
+                        <StackPanel.Resources>
+                            <Style TargetType="StackPanel">
+                                <Setter Property="Visibility" Value="Hidden"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding NewHighscore}" Value="true">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </StackPanel.Resources>
+                        <Label Content="Ny highscore!" HorizontalAlignment="Center"/>
+                        <WrapPanel HorizontalAlignment="Center">
+                            <Label Content="Tidligere highscore: "/>
+                            <Label Content="{Binding PreviousHighscore}"/>
+                        </WrapPanel>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <DockPanel LastChildFill="True">
+            <Menu DockPanel.Dock="Top" Background="LightSkyBlue">
+                <MenuItem Header="_Filer" Padding="10,5">
+                    <MenuItem Header="_Highscore" Click="MenuHighscore_Click"/>
+                    <MenuItem Header="Jeg gør intet :-)"/>
+                </MenuItem>
+            </Menu>
+            <ContentControl Content="{Binding Path=ViewModel}"/>
+        </DockPanel>
+    </Grid>
+</Window>
