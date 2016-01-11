@@ -39,7 +39,7 @@ namespace Desktop.Models
             }
             catch (Exception e)
             {
-                MessageBox.Show("There was a problem reading the JSON file\nError message: " + e.Message);
+                MessageBox.Show("There was a problem reading the JSON file\nError message: " + e.Message, "Error loading JSON", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             return questionList;
         }

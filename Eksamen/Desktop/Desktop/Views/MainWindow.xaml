@@ -6,13 +6,13 @@
         xmlns:local="clr-namespace:Desktop"
         xmlns:vm="clr-namespace:Desktop.ViewModels"
         mc:Ignorable="d"
-        Title="Immediate Feedback Assesment Technique" Height="600" Width="1000" WindowState="Maximized" Background="WhiteSmoke">
+        Title="Immediate Feedback Assesment Technique" Height="600" Width="1000" WindowState="Maximized" Background="#FFE6E6E6">
     <Window.Resources>
         <DataTemplate DataType="{x:Type vm:MainWindowVM}">
             <ScrollViewer>
                 <StackPanel HorizontalAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Auto">
                     <Label Content="Immediate Feedback Assesment Technique (IFAT)" 
-                   HorizontalAlignment="Center" FontSize="20" Grid.ColumnSpan="2"/>
+                   HorizontalAlignment="Center" FontSize="20" Grid.ColumnSpan="2" Margin="0, 10, 0, 0"/>
                     <ItemsControl ItemsSource="{Binding Questions}" Grid.Row="1" Margin="10">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
@@ -21,57 +21,63 @@
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <GroupBox Width="480px" Margin="10">
-                                    <StackPanel Margin="0,0,0,25">
-                                        <WrapPanel>
-                                            <Label Content="Spørgsmål" FontWeight="Bold" Padding="5,5,0,5"/>
-                                            <Label Content="{Binding Index}" FontWeight="Bold"/>
+                                <Grid Width="400px" Margin="10">
+                                    <StackPanel>
+                                        <WrapPanel Margin="20" Background="White">
+                                            <StackPanel Margin="20">
+                                                <WrapPanel>
+                                                    <Label Content="SPØRGSMÅL" Style="{StaticResource QuestionLabelStyle}"/>
+                                                    <Label Content="{Binding Index}" Style="{StaticResource QuestionLabelStyle}"/>
+                                                </WrapPanel>
+                                                <Label Style="{StaticResource QuestionStyle}">
+                                                    <AccessText x:Name="QuestionText" Text="{Binding Text}" TextWrapping="WrapWithOverflow"/>
+                                                </Label>
+                                                <WrapPanel Style="{StaticResource AnswerPanelStyle}">
+                                                    <TextBlock Text="A" Style="{StaticResource LetterLabelStyle}" />
+                                                    <Label>
+                                                        <AccessText Text="{Binding Answers[A]}" TextWrapping="WrapWithOverflow"/>
+                                                    </Label>
+                                                </WrapPanel>
+                                                <WrapPanel Style="{StaticResource AnswerPanelStyle}">
+                                                    <TextBlock Text="B" Style="{StaticResource LetterLabelStyle}"/>
+                                                    <Label>
+                                                        <AccessText Text="{Binding Answers[B]}" TextWrapping="WrapWithOverflow"/>
+                                                    </Label>
+                                                </WrapPanel>
+                                                <WrapPanel Style="{StaticResource AnswerPanelStyle}">
+                                                    <TextBlock Text="C" Style="{StaticResource LetterLabelStyle}"/>
+                                                    <Label>
+                                                        <AccessText Text="{Binding Answers[C]}" TextWrapping="WrapWithOverflow"/>
+                                                    </Label>
+                                                </WrapPanel>
+                                                <WrapPanel Style="{StaticResource AnswerPanelStyle}">
+                                                    <TextBlock Text="D" Style="{StaticResource LetterLabelStyle}"/>
+                                                    <Label>
+                                                        <AccessText Text="{Binding Answers[D]}" TextWrapping="WrapWithOverflow"/>
+                                                    </Label>
+                                                </WrapPanel>
+                                            </StackPanel>
                                         </WrapPanel>
-                                        <Label>
-                                            <AccessText Text="{Binding Text}" TextWrapping="WrapWithOverflow"/>
-                                        </Label>
-                                        <WrapPanel>
-                                            <Label Content="A." FontWeight="Bold"/>
-                                            <Label>
-                                                <AccessText Text="{Binding Answers[A]}" TextWrapping="WrapWithOverflow"/>
-                                            </Label>
+                                        <WrapPanel Margin="20, 0">
+                                            <Button x:Name="A" Content="A" Style="{StaticResource UnclickedButtonStyle}"
+                                                Command="{Binding AnswerButton}"
+                                                CommandParameter="{Binding ElementName=A}"/>
+                                            <Button x:Name="B" Content="B" Style="{StaticResource UnclickedButtonStyle}"
+                                                Command="{Binding AnswerButton}"
+                                                CommandParameter="{Binding ElementName=B}"/>
+                                            <Button x:Name="C" Content="C" Style="{StaticResource UnclickedButtonStyle}"
+                                                Command="{Binding AnswerButton}"
+                                                CommandParameter="{Binding ElementName=C}"/>
+                                            <Button x:Name="D" Content="D" Style="{StaticResource UnclickedButtonStyle}"
+                                                    Command="{Binding AnswerButton}"
+                                                    CommandParameter="{Binding ElementName=D}" Margin="0"/>
                                         </WrapPanel>
-                                        <WrapPanel>
-                                            <Label Content="B." FontWeight="Bold"/>
-                                            <Label>
-                                                <AccessText Text="{Binding Answers[B]}" TextWrapping="WrapWithOverflow"/>
-                                            </Label>
+                                        <WrapPanel Margin="20, 10">
+                                            <TextBlock Text="Strafpoint: " Style="{StaticResource PenaltyLabelStyle}"/>
+                                            <TextBlock Text="{Binding Points}" Style="{StaticResource PenaltyLabelStyle}"/>
                                         </WrapPanel>
-                                        <WrapPanel>
-                                            <Label Content="C." FontWeight="Bold"/>
-                                            <Label>
-                                                <AccessText Text="{Binding Answers[C]}" TextWrapping="WrapWithOverflow"/>
-                                            </Label>
-                                        </WrapPanel>
-                                        <WrapPanel>
-                                            <Label Content="D." FontWeight="Bold"/>
-                                            <Label>
-                                                <AccessText Text="{Binding Answers[D]}" TextWrapping="WrapWithOverflow"/>
-                                            </Label>
-                                        </WrapPanel>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Button x:Name="A" Content="A" Style="{StaticResource AnsButtonStyle}"
-                                        Command="{Binding AnswerButton}"
-                                        CommandParameter="{Binding ElementName=A}"/>
-                                            <Button x:Name="B" Content="B" Style="{StaticResource AnsButtonStyle}"
-                                        Command="{Binding AnswerButton}"
-                                        CommandParameter="{Binding ElementName=B}"/>
-                                            <Button x:Name="C" Content="C" Style="{StaticResource AnsButtonStyle}"
-                                        Command="{Binding AnswerButton}"
-                                        CommandParameter="{Binding ElementName=C}"/>
-                                            <Button x:Name="D" Content="D" Style="{StaticResource AnsButtonStyle}"
-                                        Command="{Binding AnswerButton}"
-                                        CommandParameter="{Binding ElementName=D}"/>
-                                            <TextBlock Text="Points:" FontSize="20px" Margin="5" VerticalAlignment="Center"/>
-                                            <TextBlock Text="{Binding Points}" FontSize="20px" Margin="0, 10, 10, 10" VerticalAlignment="Center"/>
-                                        </StackPanel>
                                     </StackPanel>
-                                </GroupBox>
+                                </Grid>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>

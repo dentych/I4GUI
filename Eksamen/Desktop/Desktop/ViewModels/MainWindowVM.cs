@@ -15,7 +15,6 @@ namespace Desktop.ViewModels
 {
     public class MainWindowVM : IViewModel
     {
-        private int _questionNumber = 1;
         private int points;
 
         public IList<IQuestion> Questions { get; set; }
