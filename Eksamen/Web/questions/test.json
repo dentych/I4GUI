@@ -1,0 +1,34 @@
+[
+    {
+        "Question": "Hvad er Benjamin?",
+        "A": "Sej",
+        "B": "Dum",
+        "C": "Flot",
+        "D": "Klog",
+        "Correct": "B"
+    },
+    {
+        "Question": "Hvad er Dennis?",
+        "A": "Sej",
+        "B": "Dum",
+        "C": "Flot",
+        "D": "Klog",
+        "Correct": "D"
+    },
+    {
+        "Question": "Er Poul Ejnar en god lærer?",
+        "A": "Nej",
+        "B": "Hell no",
+        "C": "Ja!",
+        "D": "Måske",
+        "Correct": "C"
+    },
+    {
+        "Question": "Hvad er bedst - Pepsi eller Cola?",
+        "A": "Pepsi",
+        "B": "Cola",
+        "C": "De er lige gode",
+        "D": "Jeg kan ikke finde ud af mit liv",
+        "Correct": "A"
+    }
+]

@@ -1,0 +1,81 @@
+[
+    {
+        "Question": "Hvilken af følgende symbol/navn-kombination af grundstoffer er forkert?",
+        "A": "C/carbon",
+        "B": "N/nitrogen",
+        "C": "F/fluor",
+        "D": "B/barium",
+        "Correct": "D"
+    },
+    {
+        "Question": "Hvilken af følgende formler har Albert Einstein oprindelig udledt?",
+        "A": "a^2+b^2=c^2",
+        "B": "S=K*logW",
+        "C": "a*x+b=y",
+        "D": "F=mc^2",
+        "Correct": "D"
+    },
+    {
+        "Question": "En terning med sider på 30 mm har en masse på 108 gram. Hvad er densitetenig/cm3?","A": "0,004",
+        "B": "4",
+        "C": "12",
+        "D": "36",
+        "Correct": "B"
+    },
+    {
+        "Question": "Hvilken af følgende nationer vandt VM i herrehåndbold i 2015?",
+        "A": "Frankrig",
+        "B": "Qatar",
+        "C": "Spanien",
+        "D": "Serbien",
+        "Correct": "A"
+    },
+    {
+        "Question": "Hvilket af følgende tal følger efter denne talrække: 1, 4, 13, 40?",
+        "A": "117",
+        "B": "119",
+        "C": "121",
+        "D": "129",
+        "Correct": "C"
+    },
+    {
+        "Question": "Hvor mange betydende cifre har tallet 0,005436",
+        "A": "3",
+        "B": "4",
+        "C": "6",
+        "D": "7",
+        "Correct": "B"
+    },
+    {
+        "Question": "Hvilket af følgende lande har alle disse tre farver - rødt, hvidt og grønt - i nationalflaget?",
+        "A": "Italien",
+        "B": "Frankrig",
+        "C": "Tyskland",
+        "D": "Irland",
+        "Correct": "A"
+    },
+    {
+        "Question": "Hvilken af følgende personer var Karen Blixens far?",
+        "A": "Wilhelm Freddie",
+        "B": "Wilhelm Dinesen",
+        "C": "Tom Buk-Swienty",
+        "D": "Bror Blixen",
+        "Correct": "B"
+    },
+    {
+        "Question": "Hvilken af følgende former er molekyleformlen for saltsyre?",
+        "A": "H20",
+        "B": "HCl",
+        "C": "H2SO4",
+        "D": "HNO3",
+        "Correct": "C"
+    },
+    {
+        "Question": "Hvilket af følgende forhold bruges måleenheden lux til at betegne?",
+        "A": "Basestyrke",
+        "B": "Lydstyrke",
+        "C": "Lysstyrke",
+        "D": "Strømstyrke",
+        "Correct": "C"
+    }
+]

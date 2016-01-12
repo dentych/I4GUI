@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="row" ng-repeat="question in questions" ng-if="$index % 2 == 0">
+        <div class="col-md-5">
+            <div class="question">
+                <p class="questionheader">SPØRGSMÅL {{$index+1}}</p>
+                <p class="questiontext">{{question.Question}}</p>
+                <br>
+                <p><span class="circle">A</span> {{question.A}}</p>
+                <p><span class="circle">B</span> {{question.B}}</p>
+                <p><span class="circle">C</span> {{question.C}}</p>
+                <p><span class="circle">D</span> {{question.D}}</p>
+            </div>
+            <div class="answerbuttons">
+                <div ng-class="getButtonClass(question, 'A')" ng-click="answer('A', $index)"><span>A</span></div>
+                <div ng-class="getButtonClass(question, 'B')" ng-click="answer('B', $index)"><span>B</span></div>
+                <div ng-class="getButtonClass(question, 'C')" ng-click="answer('C', $index)"><span>C</span></div>
+                <div ng-class="getButtonClass(question, 'D')" ng-click="answer('D', $index)"><span>D</span></div>
+            </div>
+            <div>
+                <p class="red">Strafpoint: {{question.points}}</p>
+            </div>
+            <br>
+        </div>
+        <div class="col-md-5 col-md-offset-2" ng-if="$index + 1 < questions.length">
+            <div class="question">
+                <p class="questionheader">SPØRGSMÅL {{$index+2}}</p>
+                <p class="questiontext">{{questions[$index+1].Question}}</p>
+                <br>
+                <p><span class="circle">A</span> {{questions[$index+1].A}}</p>
+                <p><span class="circle">B</span> {{questions[$index+1].B}}</p>
+                <p><span class="circle">C</span> {{questions[$index+1].C}}</p>
+                <p><span class="circle">D</span> {{questions[$index+1].D}}</p>
+            </div>
+            <div class="answerbuttons">
+                <div ng-class="getButtonClass(questions[$index+1], 'A')" ng-click="answer('A', $index+1)"><span>A</span></div>
+                <div ng-class="getButtonClass(questions[$index+1], 'B')" ng-click="answer('B', $index+1)"><span>B</span></div>
+                <div ng-class="getButtonClass(questions[$index+1], 'C')" ng-click="answer('C', $index+1)"><span>C</span></div>
+                <div ng-class="getButtonClass(questions[$index+1], 'D')" ng-click="answer('D', $index+1)"><span>D</span></div>
+            </div>
+            <div>
+                <p class="red">Strafpoint: {{questions[$index+1].points}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <center>
+                <br>
+                <button ng-disabled="isDisabled()" ng-click="complete()" class="btn btn-primary btn-lg">Udregn score</button>
+                <br>
+                <br>
+            </center>
+        </div>
+    </div>
+</div>

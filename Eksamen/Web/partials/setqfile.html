@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <h1>Vælg spørgsmål</h1>
+            <br>
+            <p>Skriv filnavnet på den JSON fil du ønsker at bruge til spørgsmål.
+                <br> Filen skal placeres i mappen "questions".</p>
+            <p>Hvis du har en fil med spørgsmål kaldet "spg1.json", så skriver du det i feltet herunder.</p>
+            <form ng-submit="saveFilename()">
+                <input type="text" ng-model="filename" placeholder="Navn på fil" />
+                <button class="btn btn-success" type="submit">Gem</button>
+            </form>
+        </div>
+    </div>
+</div>
